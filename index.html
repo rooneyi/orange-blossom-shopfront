@@ -1,24 +1,348 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>orange-blossom-shopfront</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrangeShop - Boutique en ligne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        orange: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-orange-600">OrangeShop</h1>
+                </div>
 
-    <meta property="og:title" content="orange-blossom-shopfront" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+                <!-- Navigation principale -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-orange-600 transition-colors font-medium">Accueil</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-600 transition-colors font-medium">Produits</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-600 transition-colors font-medium">Collections</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-600 transition-colors font-medium">À propos</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-600 transition-colors font-medium">Contact</a>
+                </nav>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+                <!-- Actions utilisateur -->
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-gray-700 hover:text-orange-600 transition-colors">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button class="p-2 text-gray-700 hover:text-orange-600 transition-colors">
+                        <i class="fas fa-user text-xl"></i>
+                    </button>
+                    <button class="p-2 text-gray-700 hover:text-orange-600 transition-colors relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="md:hidden p-2 text-gray-700 hover:text-orange-600 transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    Découvrez notre
+                    <span class="block text-orange-100">Collection Exclusive</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-orange-100 max-w-2xl mx-auto">
+                    Des produits uniques, soigneusement sélectionnés pour vous offrir le meilleur de la mode et du lifestyle.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-orange-50 transition-colors flex items-center justify-center gap-2">
+                        Découvrir les produits
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-orange-600 transition-colors">
+                        Voir les offres
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Produits Populaires</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez notre sélection de produits tendance et de qualité premium</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop" alt="Montre élégante" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Nouveau</span>
+                        </div>
+                        <button class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-orange-50 transition-colors opacity-0 group-hover:opacity-100">
+                            <i class="fas fa-heart text-gray-600 hover:text-orange-500"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Montre Élégante</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-orange-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(24 avis)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl font-bold text-orange-600">89€</span>
+                                <span class="text-gray-400 line-through text-sm">120€</span>
+                            </div>
+                            <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop" alt="Sac à main" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-orange-50 transition-colors opacity-0 group-hover:opacity-100">
+                            <i class="fas fa-heart text-gray-600 hover:text-orange-500"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Sac à Main Premium</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-orange-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(18 avis)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl font-bold text-orange-600">145€</span>
+                            </div>
+                            <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop" alt="Chaussures" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">-25%</span>
+                        </div>
+                        <button class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-orange-50 transition-colors opacity-0 group-hover:opacity-100">
+                            <i class="fas fa-heart text-gray-600 hover:text-orange-500"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Chaussures Sport</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-orange-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(32 avis)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl font-bold text-orange-600">95€</span>
+                                <span class="text-gray-400 line-through text-sm">125€</span>
+                            </div>
+                            <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop" alt="Lunettes" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-orange-50 transition-colors opacity-0 group-hover:opacity-100">
+                            <i class="fas fa-heart text-gray-600 hover:text-orange-500"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Lunettes de Soleil</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-orange-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(15 avis)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl font-bold text-orange-600">65€</span>
+                            </div>
+                            <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold">
+                    Voir tous les produits
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-2xl font-bold text-orange-500 mb-4">OrangeShop</h3>
+                    <p class="text-gray-300 mb-4">Votre destination pour les produits de qualité premium. Nous sélectionnons avec soin chaque article pour vous offrir le meilleur.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Accueil</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Produits</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Collections</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">À propos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Service client</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Livraison</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Retours</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-500 transition-colors">Garantie</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Recevez nos dernières offres et nouveautés</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Votre email" class="flex-1 px-4 py-2 rounded-l-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-orange-500">
+                        <button class="bg-orange-500 text-white px-4 py-2 rounded-r-lg hover:bg-orange-600 transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 OrangeShop. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript pour les interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation smooth scroll pour les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Animation pour les boutons d'ajout au panier
+            document.querySelectorAll('button').forEach(button => {
+                if (button.innerHTML.includes('fa-cart-plus')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Animation simple
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 150);
+                        
+                        // Ici vous pouvez ajouter votre logique d'ajout au panier
+                        console.log('Produit ajouté au panier');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
