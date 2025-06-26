@@ -39,22 +39,24 @@ const Header = () => {
             <Link to="/products" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               Produits
             </Link>
-            <a href="#" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+            <Link to="/categories" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               Collections
-            </a>
-            <a href="#" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+            </Link>
+            <Link to="/about" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               À propos
-            </a>
-            <a href="#" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+            </Link>
+            <Link to="/contact" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* Actions utilisateur */}
           <div className="flex items-center space-x-4">
-            <button className="p-2 text-gray-700 hover:text-orange-600 transition-colors">
-              <Search size={20} />
-            </button>
+            <Link to="/search">
+              <button className="p-2 text-gray-700 hover:text-orange-600 transition-colors">
+                <Search size={20} />
+              </button>
+            </Link>
             
             {user ? (
               <DropdownMenu>
@@ -64,11 +66,14 @@ const Header = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem>
-                    Mon profil
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile">Mon profil</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    Mes commandes
+                  <DropdownMenuItem asChild>
+                    <Link to="/orders">Mes commandes</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/wishlist">Ma liste de souhaits</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={handleSignOut}>
                     <LogOut className="mr-2 h-4 w-4" />

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -31,24 +32,24 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Liens Rapides</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
+                <Link to="/" className="text-gray-300 hover:text-orange-400 transition-colors">
                   Accueil
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
+                <Link to="/products" className="text-gray-300 hover:text-orange-400 transition-colors">
                   Produits
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
+                <Link to="/categories" className="text-gray-300 hover:text-orange-400 transition-colors">
                   Collections
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
-                  Promotions
-                </a>
+                <Link to="/about" className="text-gray-300 hover:text-orange-400 transition-colors">
+                  À propos
+                </Link>
               </li>
             </ul>
           </div>
@@ -58,24 +59,24 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Service Client</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-orange-400 transition-colors">
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-orange-400 transition-colors">
                   Livraison & Retours
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-orange-400 transition-colors">
                   Guide des tailles
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-orange-400 transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -105,12 +106,12 @@ const Footer = () => {
             © 2024 OrangeShop. Tous droits réservés.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
+            <Link to="/contact" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
               Politique de confidentialité
-            </a>
-            <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
+            </Link>
+            <Link to="/contact" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
               Conditions d'utilisation
-            </a>
+            </Link>
           </div>
         </div>
       </div>
