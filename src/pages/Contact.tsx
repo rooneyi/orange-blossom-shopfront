@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 const Contact = () => {
@@ -20,11 +20,10 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "Message envoyé",
+        title: "Message envoyé !",
         description: "Nous vous répondrons dans les plus brefs délais.",
       });
       setIsLoading(false);
-      (e.target as HTMLFormElement).reset();
     }, 1000);
   };
 
@@ -32,124 +31,210 @@ const Contact = () => {
     <div className="min-h-screen bg-white">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">Contactez-nous</h1>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Formulaire de contact */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Envoyez-nous un message</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">Prénom</Label>
-                    <Input id="firstName" name="firstName" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Nom</Label>
-                    <Input id="lastName" name="lastName" required />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" required />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Sujet</Label>
-                  <Input id="subject" name="subject" required />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Votre message..."
-                    required
-                  />
-                </div>
-                
-                <Button
-                  type="submit"
-                  className="w-full bg-orange-600 hover:bg-orange-700"
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contactez-nous</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Une question ? Un problème ? Notre équipe est là pour vous aider. 
+            N'hésitez pas à nous contacter !
+          </p>
+        </div>
 
-          {/* Informations de contact */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Contact Information */}
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Nos coordonnées</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-3">
+                <CardTitle className="flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-orange-600" />
-                  <div>
-                    <div className="font-semibold">Adresse</div>
-                    <div className="text-gray-600">123 Rue de la Mode, 75001 Paris</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-orange-600" />
-                  <div>
-                    <div className="font-semibold">Téléphone</div>
-                    <div className="text-gray-600">+33 1 23 45 67 89</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-orange-600" />
-                  <div>
-                    <div className="font-semibold">Email</div>
-                    <div className="text-gray-600">contact@orangeshop.fr</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 text-orange-600" />
-                  <div>
-                    <div className="font-semibold">Horaires</div>
-                    <div className="text-gray-600">
-                      Lun-Ven: 9h-18h<br />
-                      Sam: 10h-17h<br />
-                      Dim: Fermé
-                    </div>
-                  </div>
-                </div>
+                  Adresse
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  123 Rue de la Mode<br />
+                  75001 Paris<br />
+                  France
+                </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Questions fréquentes</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Phone className="h-5 w-5 text-orange-600" />
+                  Téléphone
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <div className="font-semibold text-orange-600">Livraison</div>
-                  <div className="text-gray-600">Livraison gratuite à partir de 50€</div>
+              <CardContent>
+                <p className="text-gray-600">+33 1 23 45 67 89</p>
+                <p className="text-sm text-gray-500 mt-1">Lun - Ven: 9h - 18h</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Mail className="h-5 w-5 text-orange-600" />
+                  Email
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">contact@orangeshop.fr</p>
+                <p className="text-sm text-gray-500 mt-1">Réponse sous 24h</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Clock className="h-5 w-5 text-orange-600" />
+                  Horaires
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-1 text-gray-600">
+                  <p>Lundi - Vendredi: 9h - 18h</p>
+                  <p>Samedi: 10h - 16h</p>
+                  <p>Dimanche: Fermé</p>
                 </div>
-                
-                <div>
-                  <div className="font-semibold text-orange-600">Retours</div>
-                  <div className="text-gray-600">Retours gratuits sous 30 jours</div>
-                </div>
-                
-                <div>
-                  <div className="font-semibold text-orange-600">Paiement</div>
-                  <div className="text-gray-600">Paiement sécurisé par carte bancaire</div>
-                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Contact Form */}
+          <div className="lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Envoyez-nous un message</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">Prénom *</Label>
+                      <Input
+                        id="firstName"
+                        name="firstName"
+                        required
+                        placeholder="Votre prénom"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Nom *</Label>
+                      <Input
+                        id="lastName"
+                        name="lastName"
+                        required
+                        placeholder="Votre nom"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email *</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="votre@email.com"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Téléphone</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+33 1 23 45 67 89"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Sujet *</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      required
+                      placeholder="Sujet de votre message"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message *</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={6}
+                      placeholder="Décrivez votre demande en détail..."
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-orange-600 hover:bg-orange-700"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Questions Fréquentes</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Quels sont vos délais de livraison ?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Nous livrons généralement sous 2-3 jours ouvrés en France métropolitaine. 
+                  La livraison est gratuite pour toute commande supérieure à 50€.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Comment puis-je retourner un produit ?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Vous avez 30 jours pour retourner un produit. Contactez-nous pour obtenir 
+                  une étiquette de retour gratuite et les instructions détaillées.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Proposez-vous une garantie ?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Tous nos produits sont couverts par la garantie constructeur. 
+                  En cas de défaut, nous nous occupons de tout pour vous.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Comment suivre ma commande ?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Vous recevrez un email avec le numéro de suivi dès l'expédition. 
+                  Vous pouvez aussi consulter vos commandes dans votre espace client.
+                </p>
               </CardContent>
             </Card>
           </div>
