@@ -1,9 +1,14 @@
 
 import React from 'react';
-import { Heart, Star } from 'lucide-react';
+import { Star, ShoppingCart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { useCart } from '@/hooks/useCart';
+import { useAuth } from '@/hooks/useAuth';
+import { toast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
-  id: number;
+  id: string;
   name: string;
   price: number;
   originalPrice?: number;
@@ -14,70 +19,88 @@ interface ProductCardProps {
   isSale?: boolean;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
-  name,
-  price,
-  originalPrice,
-  image,
-  rating,
-  reviews,
-  isNew,
-  isSale
-}) => {
+const ProductCard = ({ id, name, price, originalPrice, image, rating, reviews, isNew, isSale }: ProductCardProps) => {
+  const { addToCart } = useCart();
+  const { user } = useAuth();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation when clicking the button
+    
+    if (!user) {
+      toast({
+        title: "Connexion requise",
+        description: "Veuillez vous connecter pour ajouter des produits au panier.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    addToCart(id);
+  };
+
   return (
-    <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
       <div className="relative overflow-hidden">
         <img 
           src={image} 
           alt={name}
           className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
+        <div className="absolute top-4 left-4 flex gap-2">
           {isNew && (
-            <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+            <Badge className="bg-green-500 hover:bg-green-600">
               Nouveau
-            </span>
+            </Badge>
           )}
           {isSale && (
-            <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+            <Badge className="bg-red-500 hover:bg-red-600">
               Promo
-            </span>
+            </Badge>
           )}
-        </div>
-        <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-orange-50">
-          <Heart size={16} className="text-gray-600 hover:text-orange-600" />
-        </button>
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
-          <button className="bg-orange-600 text-white px-6 py-2 rounded-full font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-orange-700">
-            Ajouter au panier
-          </button>
         </div>
       </div>
       
-      <div className="p-4">
-        <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">
-          {name}
-        </h3>
+      <div className="p-6">
+        <h3 className="font-bold text-lg mb-2 text-gray-800 line-clamp-2">{name}</h3>
         
-        <div className="flex items-center gap-1 mb-2">
-          <div className="flex">
+        <div className="flex items-center mb-3">
+          <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
-              <Star 
-                key={i} 
-                size={14} 
-                className={i < Math.floor(rating) ? "text-yellow-400 fill-current" : "text-gray-300"} 
+              <Star
+                key={i}
+                className={`h-4 w-4 ${
+                  i < Math.floor(rating) 
+                    ? 'text-yellow-400 fill-current' 
+                    : 'text-gray-300'
+                }`}
               />
             ))}
           </div>
-          <span className="text-sm text-gray-500">({reviews})</span>
+          <span className="ml-2 text-sm text-gray-600">
+            ({reviews})
+          </span>
         </div>
         
-        <div className="flex items-center gap-2">
-          <span className="text-xl font-bold text-orange-600">{price}€</span>
-          {originalPrice && (
-            <span className="text-sm text-gray-500 line-through">{originalPrice}€</span>
-          )}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-xl text-orange-600">
+              {price.toFixed(2)} €
+            </span>
+            {originalPrice && (
+              <span className="text-gray-500 line-through text-sm">
+                {originalPrice.toFixed(2)} €
+              </span>
+            )}
+          </div>
         </div>
+        
+        <Button 
+          className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+          onClick={handleAddToCart}
+        >
+          <ShoppingCart className="h-4 w-4 mr-2" />
+          Ajouter au panier
+        </Button>
       </div>
     </div>
   );
